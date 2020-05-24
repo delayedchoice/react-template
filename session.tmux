@@ -5,7 +5,7 @@ tmux new-session -s react-template -n editor -d
 # END:cd
 #tmux send-keys -t react-template 'cd ~/devproject' C-m
 # START:vim
-tmux send-keys -t react-template 'nvm use  v12.15.0 ; n src/App.js' C-m
+tmux send-keys -t react-template 'nvm use  v12.16.3 ; n src/index.jsx' C-m
 # END:vim
 # START:hsplit
 #tmux split-window -v -t react-template
