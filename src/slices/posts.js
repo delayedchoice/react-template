@@ -34,11 +34,12 @@ export function fetchPosts() {
     dispatch(getPosts())
 
     try {
-      const response = await fetch('https://loclhost:3000/entries')
+      const response = await fetch('http://localhost:3000/api/entries')
       const data = await response.json()
 
       dispatch(getPostsSuccess(data))
     } catch (error) {
+      console.log(error);
       dispatch(getPostsFailure())
     }
   }
