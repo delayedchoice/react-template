@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { makeServer } from "./server"
 
 import App from './App'
+import ErrorBoundry from './components/ErrorBoundry'
 import rootReducer from './slices'
 
 import './index.css'
@@ -17,7 +18,9 @@ if (process.env.NODE_ENV === "development") {
 
 render(
   <Provider store={store}>
-    <App />
+    <ErrorBoundry>
+        <App />
+    </ErrorBoundry>
   </Provider>,
   document.getElementById('root')
 )

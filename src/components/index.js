@@ -1,3 +1,3 @@
-import Editable from "./Editable.jsx";
+import Entry from "./Entry.jsx";
 
-export default Editable;
+export Entry;

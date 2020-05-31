@@ -7,18 +7,18 @@ import {
 } from 'react-router-dom'
 
 import { Navbar } from './components/Navbar'
-import DashboardPage from './pages/DashboardPage'
-import PostsPage from './pages/PostsPage'
-import SinglePostPage from './pages/SinglePostPage'
+import Dashboard from './components/Dashboard'
+import Entries from './components/Entries'
+import Detail from './components/Detail'
 
 const App = () => {
   return (
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={DashboardPage} />
-        <Route exact path="/posts" component={PostsPage} />
-        <Route exact path="/posts/:id" component={SinglePostPage} />
+        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/entries" component={Entries} />
+        <Route exact path="/entries/:id" component={Detail} />
         <Redirect to="/" />
       </Switch>
     </Router>

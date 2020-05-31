@@ -3,44 +3,44 @@ import { createSlice } from '@reduxjs/toolkit'
 export const initialState = {
   loading: false,
   hasErrors: false,
-  posts: [],
+  entries: [],
 }
 
-const postsSlice = createSlice({
-  name: 'posts',
+const entriesSlice = createSlice({
+  name: 'entries',
   initialState,
   reducers: {
-    getPosts: state => {
+    getEntries: state => {
       state.loading = true
     },
-    getPostsSuccess: (state, { payload }) => {
-      state.posts = payload
+    getEntriesSuccess: (state, { payload }) => {
+      state.entries = payload.entries
       state.loading = false
       state.hasErrors = false
     },
-    getPostsFailure: state => {
+    getEntriesFailure: state => {
       state.loading = false
       state.hasErrors = true
     },
   },
 })
 
-export const { getPosts, getPostsSuccess, getPostsFailure } = postsSlice.actions
-export const postsSelector = state => state.posts
-export default postsSlice.reducer
+export const { getEntries, getEntriesSuccess, getEntriesFailure } = entriesSlice.actions
+export const entriesSelector = state => state.entries
+export default entriesSlice.reducer
 
-export function fetchPosts() {
+export function fetchEntries() {
   return async dispatch => {
-    dispatch(getPosts())
+    dispatch(getEntries())
 
     try {
       const response = await fetch('http://localhost:3000/api/entries')
       const data = await response.json()
 
-      dispatch(getPostsSuccess(data))
+      dispatch(getEntriesSuccess(data))
     } catch (error) {
       console.log(error);
-      dispatch(getPostsFailure())
+      dispatch(getEntriesFailure())
     }
   }
 }

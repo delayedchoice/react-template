@@ -10,7 +10,10 @@ export function makeServer(environment) {
 
     routes() {
      this.namespace = "api"
-
+     this.get("/entries/:id", (schema, request) => {
+        let id = request.params.id
+        return schema.entries.find(id)
+     })
      this.get("/entries", (schema, request) => {
        return schema.entries.all()
      })
@@ -18,6 +21,7 @@ export function makeServer(environment) {
 
     seeds(server) {
      server.create("entry", {
+       id: 1,
        magBin: 12,
        sector: 18,
        tic: 5646747,
